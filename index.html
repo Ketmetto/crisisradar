@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>CrisisRadar</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -15,6 +14,8 @@
   <div class="sidebar">
     <h2>🌍 CrisisRadar</h2>
 
+    <p id="lastUpdate">Last update: --</p>
+
     <div class="stats">
       <p>🔥 Fires: <span id="fires">0</span></p>
       <p>🌪 Storms: <span id="storms">0</span></p>
@@ -26,16 +27,18 @@
     <input type="text" id="search" placeholder="Search location..." />
 
     <div class="filters">
-      <button onclick="filterEvents('Wildfires')">🔥 Fires</button>
-      <button onclick="filterEvents('Severe Storms')">🌪 Storms</button>
-      <button onclick="filterEvents('Volcanoes')">🌋 Volcanoes</button>
-      <button onclick="filterEvents('Icebergs')">🧊 Icebergs</button>
-      <button onclick="resetFilters()">🌍 Clear</button>
+      <button onclick="setActive(this); loadAndFilter('Wildfires')">🔥 Fires</button>
+      <button onclick="setActive(this); loadAndFilter('Severe Storms')">🌪 Storms</button>
+      <button onclick="setActive(this); loadAndFilter('Volcanoes')">🌋 Volcanoes</button>
+      <button onclick="setActive(this); loadAndFilter('Icebergs')">🧊 Icebergs</button>
+      <button onclick="resetFilters()">❌ Clear</button>
     </div>
 
-    <button onclick="loadEvents()" style="margin-top:10px;">📡 Load Events</button>
-
+    <button onclick="loadEvents()">📡 Load Events</button>
   </div>
+
+  <!-- LOADER -->
+  <div id="loader">Loading data...</div>
 
   <!-- MAP -->
   <div id="map"></div>
