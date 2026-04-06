@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CrisisRadar</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>🌍 CrisisRadar</h2>
+
+    <div class="stats">
+      <p>🔥 Fires: <span id="fires">0</span></p>
+      <p>🌪 Storms: <span id="storms">0</span></p>
+      <p>🌋 Volcanoes: <span id="volcanoes">0</span></p>
+      <p>🧊 Icebergs: <span id="icebergs">0</span></p>
+      <p>📊 Total: <span id="total">0</span></p>
+    </div>
+
+    <input type="text" id="search" placeholder="Search location..." />
+
+    <div class="filters">
+      <button onclick="filterEvents('Wildfires')">🔥 Fires</button>
+      <button onclick="filterEvents('Severe Storms')">🌪 Storms</button>
+      <button onclick="filterEvents('Volcanoes')">🌋 Volcanoes</button>
+      <button onclick="filterEvents('Icebergs')">🧊 Icebergs</button>
+      <button onclick="resetFilters()">🌍 Clear</button>
+    </div>
+
+    <button onclick="loadEvents()" style="margin-top:10px;">📡 Load Events</button>
+
+  </div>
+
+  <!-- MAP -->
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
